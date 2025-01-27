@@ -1,4 +1,4 @@
-import cheerio from 'cheerio'
+import {load} from 'cheerio'
 import fetch from 'isomorphic-unfetch'
 
 import {
@@ -46,7 +46,7 @@ const getFormHtml = async (formUrl: string) => {
 }
 
 const extractFormData = (html: string): FormData => {
-  const $ = cheerio.load(html)
+  const $ = load(html)
   const fbzx = $('[name="fbzx"]').attr('value')
 
   if (!fbzx) {
